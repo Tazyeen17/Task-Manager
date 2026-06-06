@@ -6,7 +6,7 @@ import FilterBar from './components/FilterBar';
 import TaskForm from './components/TaskForm';
 import DraggableTaskList from './components/DraggableTaskList';
 import EmptyState from './components/EmptyState';
-import type { Task } from './types/task';
+import type { Task, CreateTaskPayload, UpdateTaskPayload } from './types/task';
 
 const App: React.FC = () => {
   const {
@@ -45,11 +45,11 @@ const App: React.FC = () => {
     setEditingTask(null);
   };
 
-  const handleFormSubmit = async (payload: Parameters<typeof addTask>[0]) => {
+  const handleFormSubmit = async (payload: CreateTaskPayload | UpdateTaskPayload) => {
     if (editingTask) {
-      await editTask(editingTask.id, payload);
+      await editTask(editingTask.id, payload as UpdateTaskPayload);
     } else {
-      await addTask(payload);
+      await addTask(payload as CreateTaskPayload);
     }
   };
 
