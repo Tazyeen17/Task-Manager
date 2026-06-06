@@ -10,7 +10,8 @@ const PORT = process.env.PORT || 3001;
 const ALLOWED_ORIGINS = [
   'http://localhost:5173',
   'http://localhost:4173',
-  process.env.CLIENT_ORIGIN,
+  'https://task-manager-eta-ten-54.vercel.app', // production frontend
+  process.env.CLIENT_ORIGIN,                     // override via env var if needed
 ].filter(Boolean) as string[];
 
 app.use(
