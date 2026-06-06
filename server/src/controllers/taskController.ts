@@ -1,5 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import { ParamsDictionary } from 'express-serve-static-core';
 import * as taskService from '../services/taskService';
+
+interface IdParams extends ParamsDictionary {
+  id: string;
+}
 
 // GET /api/tasks
 export function getTasks(req: Request, res: Response, next: NextFunction): void {
@@ -27,7 +32,7 @@ export function createTask(req: Request, res: Response, next: NextFunction): voi
 }
 
 // PATCH /api/tasks/:id
-export function updateTask(req: Request, res: Response, next: NextFunction): void {
+export function updateTask(req: Request<IdParams>, res: Response, next: NextFunction): void {
   try {
     const { id } = req.params;
     const updated = taskService.updateTask(id, req.body);
@@ -42,7 +47,7 @@ export function updateTask(req: Request, res: Response, next: NextFunction): voi
 }
 
 // DELETE /api/tasks/:id
-export function deleteTask(req: Request, res: Response, next: NextFunction): void {
+export function deleteTask(req: Request<IdParams>, res: Response, next: NextFunction): void {
   try {
     const { id } = req.params;
     const deleted = taskService.deleteTask(id);
