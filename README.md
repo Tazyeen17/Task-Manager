@@ -8,8 +8,8 @@ A full-stack personal task manager built as part of the Studio Graphene Node.js 
 
 | Layer | URL |
 |---|---|
-| Frontend | *(Deploy to Vercel — link here after deploy)* |
-| Backend | *(Deploy to Render — link here after deploy)* |
+| Frontend | https://task-manager-eta-ten-54.vercel.app |
+| Backend API | https://taskflow-api-717f.onrender.com |
 
 ---
 
